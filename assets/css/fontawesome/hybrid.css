@@ -1,0 +1,89 @@
+/*!
+ * Font Awesome Hybrid CSS
+ * Menggunakan CDN dengan fallback ke local
+ */
+
+/* Import CDN Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+/* Fallback untuk icon yang digunakan dalam aplikasi */
+.fa-laptop-code:before {
+  content: "\f5fc";
+}
+
+.fa-user:before {
+  content: "\f007";
+}
+
+.fa-envelope:before {
+  content: "\f0e0";
+}
+
+.fa-lock:before {
+  content: "\f023";
+}
+
+.fa-key:before {
+  content: "\f084";
+}
+
+.fa-sign-in-alt:before {
+  content: "\f2f6";
+}
+
+.fa-question-circle:before {
+  content: "\f059";
+}
+
+.fa-arrow-left:before {
+  content: "\f060";
+}
+
+.fa-university:before {
+  content: "\f19c";
+}
+
+.fa-info-circle:before {
+  content: "\f05a";
+}
+
+.fa-paper-plane:before {
+  content: "\f1d8";
+}
+
+.fa-save:before {
+  content: "\f0c7";
+}
+
+.fa-shield-alt:before {
+  content: "\f3ed";
+}
+
+.fa-eye:before {
+  content: "\f06e";
+}
+
+.fa-eye-slash:before {
+  content: "\f070";
+}
+
+.fa-spinner:before {
+  content: "\f110";
+}
+
+/* Animation untuk spinner */
+.fa-spin {
+  animation: fa-spin 2s linear infinite;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Note: File ini menggunakan CDN sementara */
+/* Untuk menggunakan local, download font files dan gunakan all.min.css */ 

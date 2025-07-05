@@ -1,0 +1,103 @@
+/* Fallback CSS untuk Font Awesome */
+/* Digunakan jika font files tidak tersedia */
+
+/* Fallback untuk icon yang sering digunakan */
+.fa-laptop-code:before {
+  content: "💻";
+}
+
+.fa-user:before {
+  content: "👤";
+}
+
+.fa-envelope:before {
+  content: "📧";
+}
+
+.fa-lock:before {
+  content: "🔒";
+}
+
+.fa-key:before {
+  content: "🔑";
+}
+
+.fa-sign-in-alt:before {
+  content: "➡️";
+}
+
+.fa-question-circle:before {
+  content: "❓";
+}
+
+.fa-arrow-left:before {
+  content: "⬅️";
+}
+
+.fa-university:before {
+  content: "🏛️";
+}
+
+.fa-info-circle:before {
+  content: "ℹ️";
+}
+
+.fa-paper-plane:before {
+  content: "📤";
+}
+
+.fa-save:before {
+  content: "💾";
+}
+
+.fa-shield-alt:before {
+  content: "🛡️";
+}
+
+.fa-eye:before {
+  content: "👁️";
+}
+
+.fa-eye-slash:before {
+  content: "🙈";
+}
+
+.fa-spinner:before {
+  content: "⏳";
+}
+
+/* Fallback untuk semua icon Font Awesome */
+.fa:before,
+.fas:before,
+.far:before,
+.fal:before,
+.fab:before {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  text-shadow: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  line-height: inherit;
+  direction: inherit;
+  unicode-bidi: inherit;
+  display: inline-block;
+  width: 1.28571429em;
+  text-align: center;
+}
+
+/* Fallback animation untuk spinner */
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.fa-spin {
+  animation: fa-spin 2s linear infinite;
+} 
