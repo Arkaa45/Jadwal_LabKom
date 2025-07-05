@@ -129,7 +129,10 @@ class Auth extends CI_Controller
 		$this->data['title'] = "Logout";
 
 		// log the user out
-		$this->ion_auth->logout();
+		$logout_result = $this->ion_auth->logout();
+		
+		// Set flash message for successful logout
+		$this->session->set_flashdata('message', 'Anda berhasil logout.');
 
 		// redirect them to the login page
 		redirect('auth/login', 'refresh');

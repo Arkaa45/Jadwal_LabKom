@@ -7,7 +7,7 @@
 <body>
 <div class="container-fluid">
     <h3 class="text-center">Dashboard Laboran</h3>
-    <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger pull-right">Logout</a>
+    <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger pull-right" onclick="return confirm('Apakah Anda yakin ingin logout?')">Logout</a>
     <div class="row">
         <div class="col-md-3">
             <h4>Menu</h4>
@@ -30,6 +30,6 @@
         </div>
     </div>
 </div>
-<script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
 </body>
 </html>
