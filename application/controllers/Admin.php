@@ -12,10 +12,15 @@ class Admin extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('dashboard/dashboard_admin');
+        $this->load->model('Dashboard_model');
+        $data['praktikan'] = $this->Dashboard_model->get_praktikan_per_prodi();
+        $data['kelas'] = $this->Dashboard_model->get_kelas_per_kategori();
+        $data['mata_praktikum'] = $this->Dashboard_model->get_mata_praktikum_per_semester();
+        $data['asisten'] = $this->Dashboard_model->get_asisten_per_prodi();
+        $this->load->view('dashboard/dashboard_admin', $data);
     }
 
     public function dashboard() {
-        $this->load->view('dashboard/dashboard_admin');
+        redirect('admin');
     }
 }
