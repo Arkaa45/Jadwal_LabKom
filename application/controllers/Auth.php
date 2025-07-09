@@ -80,13 +80,18 @@ class Auth extends CI_Controller
 			{
 				$user = $this->ion_auth->user()->row();
 
+				// Set role berdasarkan group user
 				if ($this->ion_auth->in_group('admin')) {
+					$this->session->set_userdata('role', 'admin');
 					redirect('admin/dashboard', 'refresh');
 				} elseif ($this->ion_auth->in_group('kepala_lab')) {
+					$this->session->set_userdata('role', 'kepala_lab');
 					redirect('kepala_lab/dashboard', 'refresh');
 				} elseif ($this->ion_auth->in_group('laboran')) {
+					$this->session->set_userdata('role', 'laboran');
 					redirect('laboran/dashboard', 'refresh');
 				} else {
+					$this->session->set_userdata('role', 'user');
 					redirect('/', 'refresh'); // default
 				}
 			}

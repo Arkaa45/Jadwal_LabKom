@@ -9,6 +9,7 @@ class JadwalPraktikum extends CI_Controller {
 
     public function index() {
         $data['jadwal'] = $this->JadwalPraktikum_model->get_all_jadwal();
+        $data['role'] = $this->session->userdata('role');
         $this->load->view('jadwal_praktikum', $data);
     }
 } 

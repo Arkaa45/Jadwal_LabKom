@@ -1,0 +1,106 @@
+/* Sidebar Styles */
+.sidebar-container {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px;
+    border-right: 1px solid #dee2e6;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo img {
+    max-width: 80px;
+    height: auto;
+}
+
+.sidebar-menu h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.nav-stacked > li > a {
+    color: #333;
+    text-decoration: none;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.nav-stacked > li > a:hover {
+    background-color: #e9ecef;
+    color: #333;
+    transform: translateX(5px);
+}
+
+.nav-stacked > li.active > a {
+    background-color: #337ab7 !important;
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.nav-stacked > li.active > a:hover {
+    background-color: #286090 !important;
+    color: #fff !important;
+}
+
+/* Dashboard Header Styles */
+.dashboard-header {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.dashboard-header h3 {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.dashboard-header .btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar-container {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .nav-stacked > li > a {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .dashboard-header .btn {
+        position: static;
+        margin-top: 10px;
+        float: right;
+    }
+}
+
+/* Content area adjustments */
+.content-area {
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Ensure sidebar is always visible */
+.col-md-2 {
+    position: relative;
+    z-index: 1000;
+} 

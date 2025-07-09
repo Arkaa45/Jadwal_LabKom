@@ -16,6 +16,7 @@ class Laboran extends CI_Controller {
         $data['kelas'] = $this->Dashboard_model->get_kelas_per_kategori();
         $data['mata_praktikum'] = $this->Dashboard_model->get_mata_praktikum_per_semester();
         $data['asisten'] = $this->Dashboard_model->get_asisten_per_prodi();
+        $data['role'] = $this->session->userdata('role');
         $this->load->view('dashboard/dashboard_laboran', $data);
     }
 
