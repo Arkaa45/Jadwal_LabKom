@@ -15,7 +15,7 @@
             </div>
             <h4>Menu</h4>
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Jadwal Praktikum</a></li>
+                <li><a href="<?= base_url('index.php/JadwalPraktikum') ?>">Jadwal Praktikum</a></li>
                 <li><a href="#">Kelas Praktikum</a></li>
                 <li><a href="#">Praktikan</a></li>
                 <li><a href="#">Mata Praktikum</a></li>
