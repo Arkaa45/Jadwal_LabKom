@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Jadwal Praktikum</title>
+    <title>Daftar Kelas Praktikum</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/fontawesome/all.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/sidebar.css'); ?>">
@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-<?php $active_menu = 'jadwal'; ?>
+<?php $active_menu = 'kelas'; ?>
 <div class="container-fluid">
     <div class="row">
         <?php
@@ -34,11 +34,9 @@
         }
         ?>
         <div class="<?php echo $content_class; ?>">
-            <h3>Daftar jadwal praktikum</h3>
+            <h3>Daftar kelas praktikum</h3>
             <div class="mb-3">
-                <a href="<?php echo base_url('index.php/JadwalPraktikum/tambah'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-                <button class="btn btn-secondary"><i class="fa fa-edit"></i> Data ubah jadwal</button>
-                <button class="btn btn-info"><i class="fa fa-print"></i> Cetak</button>
+                <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
             </div>
             <div class="row mb-2">
                 <div class="col-md-2">
@@ -48,40 +46,28 @@
                     <input type="text" class="form-control" placeholder="Cari...">
                 </div>
             </div>
-            <table class="table table-bordered table-striped" id="jadwal-table">
+            <table class="table table-bordered table-striped" id="kelas-table">
                 <thead class="thead-dark">
                     <tr>
                         <th>No</th>
-                        <th>Tahun</th>
+                        <th>Kode</th>
                         <th>Semester</th>
-                        <th>Matkum</th>
-                        <th>Askum</th>
-                        <th>Ruangan</th>
-                        <th>Kelas</th>
-                        <th>Hari</th>
-                        <th>Waktu</th>
                         <th>Pilihan</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php if (!empty($jadwal)): $no=1; foreach ($jadwal as $row): ?>
+                <?php if (!empty($kelas)): foreach ($kelas as $row): ?>
                     <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= htmlspecialchars($row['tahun_ajaran']); ?></td>
-                        <td><?= htmlspecialchars($row['semester']); ?></td>
-                        <td><?= htmlspecialchars($row['nama_matkum']); ?></td>
-                        <td><?= htmlspecialchars($row['nama_dosen']); ?></td>
-                        <td><?= htmlspecialchars($row['nama_ruang']); ?></td>
+                        <td><?= htmlspecialchars($row['kode_kelas']); ?></td>
                         <td><?= htmlspecialchars($row['nama_kelas']); ?></td>
-                        <td><?= htmlspecialchars($row['hari']); ?></td>
-                        <td><?= htmlspecialchars(date('H:i', strtotime($row['waktu_mulai'])) . ' - ' . date('H:i', strtotime($row['waktu_selesai']))); ?></td>
+                        <td><?= htmlspecialchars($row['semester']); ?></td>
                         <td>
                             <button class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                             <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                 <?php endforeach; else: ?>
-                    <tr><td colspan="10" class="text-center">Data tidak ditemukan</td></tr>
+                    <tr><td colspan="4" class="text-center">Data tidak ditemukan</td></tr>
                 <?php endif; ?>
                 </tbody>
             </table>
@@ -97,8 +83,7 @@
     $(document).ready(function() {
         // Back button
         $('#btn-back').on('click', function() {
-            var role = <?php echo json_encode(isset(
-                $role) ? $role : ''); ?>;
+            var role = <?php echo json_encode(isset($role) ? $role : ''); ?>;
             var url = '';
             if (role === 'admin') {
                 url = '<?php echo base_url('admin'); ?>';
@@ -115,7 +100,7 @@
         // Entries count filter
         function updateTableEntries() {
             var count = parseInt($('#entries-count').val()) || 10;
-            var rows = $('#jadwal-table tbody tr');
+            var rows = $('#kelas-table tbody tr');
             rows.hide();
             rows.slice(0, count).show();
         }

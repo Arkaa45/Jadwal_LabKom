@@ -9,7 +9,7 @@
                 <a href="<?= base_url('index.php/JadwalPraktikum') ?>">Jadwal Praktikum</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'kelas') ? 'active' : '' ?>">
-                <a href="#">Kelas Praktikum</a>
+                <a href="<?= base_url('index.php/Kelas') ?>">Kelas Praktikum</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'praktikan') ? 'active' : '' ?>">
                 <a href="#">Praktikan</a>
