@@ -42,19 +42,48 @@
                 </div>
                 <div class="form-group">
                     <label for="kode_matkum">Mata Praktikum</label>
-                    <input type="text" class="form-control" id="kode_matkum" name="kode_matkum" required>
+                    <select class="form-control" id="kode_matkum" name="kode_matkum" required>
+                        <option value="">-- Pilih Mata Praktikum --</option>
+                        <?php foreach ($mata_praktikum as $matkum): ?>
+                            <option value="<?= htmlspecialchars($matkum['kode_matkum']) ?>">
+                                <?= htmlspecialchars($matkum['nama_matkum']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="nidn">Asisten Praktikum</label>
-                    <input type="text" class="form-control" id="nidn" name="nidn" required>
+                    <select class="form-control" id="nidn" name="nidn" required>
+                        <option value="">-- Pilih Asisten Praktikum --</option>
+                        <?php foreach (
+                            $asisten as $as): ?>
+                            <option value="<?= htmlspecialchars($as['nidn']) ?>">
+                                <?= htmlspecialchars($as['nama_dosen']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="kode_ruang">Ruang Lab</label>
-                    <input type="text" class="form-control" id="kode_ruang" name="kode_ruang" required>
+                    <select class="form-control" id="kode_ruang" name="kode_ruang" required>
+                        <option value="">-- Pilih Ruang Lab --</option>
+                        <?php foreach ($ruang_lab as $ruang): ?>
+                            <option value="<?= htmlspecialchars($ruang['kode_ruang']) ?>">
+                                <?= htmlspecialchars($ruang['nama_ruang']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="kode_kelas">Kelas</label>
-                    <input type="text" class="form-control" id="kode_kelas" name="kode_kelas" required>
+                    <select class="form-control" id="kode_kelas" name="kode_kelas" required>
+                        <option value="">-- Pilih Kelas --</option>
+                        <?php foreach ($kelas as $kls): ?>
+                            <option value="<?= htmlspecialchars($kls['kode_kelas']) ?>">
+                                <?= htmlspecialchars($kls['nama_kelas']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Hari</label><br>

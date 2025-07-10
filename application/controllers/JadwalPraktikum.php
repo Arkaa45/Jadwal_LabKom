@@ -8,13 +8,17 @@ class JadwalPraktikum extends CI_Controller {
     }
 
     public function index() {
-        $data['jadwal'] = $this->JadwalPraktikum_model->get_all_jadwal();
+        $data['jadwal'] = $this->JadwalPraktikum_model->get_jadwal_with_nama_referensi();
         $data['role'] = $this->session->userdata('role');
         $this->load->view('jadwal_praktikum', $data);
     }
 
     public function tambah() {
         $data['role'] = $this->session->userdata('role');
+        $data['mata_praktikum'] = $this->JadwalPraktikum_model->get_all_mata_praktikum();
+        $data['asisten'] = $this->JadwalPraktikum_model->get_all_asisten();
+        $data['ruang_lab'] = $this->JadwalPraktikum_model->get_all_ruang_lab();
+        $data['kelas'] = $this->JadwalPraktikum_model->get_all_kelas();
         $this->load->view('tambah_jadwal_praktikum', $data);
     }
 

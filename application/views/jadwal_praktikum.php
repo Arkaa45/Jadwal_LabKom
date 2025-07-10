@@ -69,10 +69,10 @@
                         <td><?= $no++; ?></td>
                         <td><?= htmlspecialchars($row['tahun_ajaran']); ?></td>
                         <td><?= htmlspecialchars($row['semester']); ?></td>
-                        <td><?= htmlspecialchars($row['kode_matkum']); ?></td>
-                        <td><?= htmlspecialchars($row['nidn']); ?></td>
-                        <td><?= htmlspecialchars($row['kode_ruang']); ?></td>
-                        <td><?= htmlspecialchars($row['kode_kelas']); ?></td>
+                        <td><?= htmlspecialchars($row['nama_matkum']); ?></td>
+                        <td><?= htmlspecialchars($row['nama_dosen']); ?></td>
+                        <td><?= htmlspecialchars($row['nama_ruang']); ?></td>
+                        <td><?= htmlspecialchars($row['nama_kelas']); ?></td>
                         <td><?= htmlspecialchars($row['hari']); ?></td>
                         <td><?= htmlspecialchars(date('H:i', strtotime($row['waktu_mulai'])) . ' - ' . date('H:i', strtotime($row['waktu_selesai']))); ?></td>
                         <td>
