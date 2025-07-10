@@ -12,4 +12,18 @@ class Kelas extends CI_Controller {
         $data['role'] = $this->session->userdata('role');
         $this->load->view('kelas_praktikum', $data);
     }
+
+    public function tambah() {
+        $data['role'] = $this->session->userdata('role');
+        $this->load->view('tambah_kelas', $data);
+    }
+
+    public function simpan() {
+        $data = array(
+            'nama_kelas' => $this->input->post('nama_kelas'),
+            'semester' => $this->input->post('semester'),
+        );
+        $this->Kelas_model->insert_kelas($data);
+        redirect('Kelas');
+    }
 } 

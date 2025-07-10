@@ -36,7 +36,7 @@
         <div class="<?php echo $content_class; ?>">
             <h3>Daftar kelas praktikum</h3>
             <div class="mb-3">
-                <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                <a href="<?php echo base_url('index.php/Kelas/tambah'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
             </div>
             <div class="row mb-2">
                 <div class="col-md-2">
