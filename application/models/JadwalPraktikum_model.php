@@ -6,5 +6,9 @@ class JadwalPraktikum_model extends CI_Model {
     public function get_all_jadwal() {
         return $this->db->get('jadwal_praktikum')->result_array();
     }
+    // Tambah data jadwal praktikum
+    public function insert_jadwal($data) {
+        return $this->db->insert('jadwal_praktikum', $data);
+    }
     // Tambahan fungsi lain (insert, update, delete) bisa dibuat sesuai kebutuhan
 } 

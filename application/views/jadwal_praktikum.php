@@ -36,7 +36,7 @@
         <div class="<?php echo $content_class; ?>">
             <h3>Daftar jadwal praktikum</h3>
             <div class="mb-3">
-                <button class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</button>
+                <a href="<?php echo base_url('index.php/JadwalPraktikum/tambah'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                 <button class="btn btn-secondary"><i class="fa fa-edit"></i> Data ubah jadwal</button>
                 <button class="btn btn-info"><i class="fa fa-print"></i> Cetak</button>
             </div>
@@ -85,7 +85,7 @@
                 <?php endif; ?>
                 </tbody>
             </table>
-            <button class="btn btn-secondary">Back</button>
+            <button class="btn btn-secondary" id="btn-back">Back</button>
         </div>
     </div>
 </div>
@@ -93,5 +93,24 @@
 <script src="<?php echo base_url('assets/js/auth-script.js'); ?>"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?php echo base_url('assets/js/sidebar.js'); ?>"></script>
+<script>
+    $(document).ready(function() {
+        $('#btn-back').on('click', function() {
+            var role = <?php echo json_encode(isset(
+                $role) ? $role : ''); ?>;
+            var url = '';
+            if (role === 'admin') {
+                url = '<?php echo base_url('admin'); ?>';
+            } else if (role === 'kepala_lab') {
+                url = '<?php echo base_url('kepalalab'); ?>';
+            } else if (role === 'laboran') {
+                url = '<?php echo base_url('laboran'); ?>';
+            } else {
+                url = '<?php echo base_url(); ?>';
+            }
+            window.location.href = url;
+        });
+    });
+</script>
 </body>
 </html> 

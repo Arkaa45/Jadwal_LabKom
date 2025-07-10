@@ -23,9 +23,6 @@
             <li class="<?= (isset($active_menu) && $active_menu == 'asisten') ? 'active' : '' ?>">
                 <a href="#">Asisten Praktikum</a>
             </li>
-            <li class="<?= (isset($active_menu) && $active_menu == 'ruang') ? 'active' : '' ?>">
-                <a href="#">Ruang Laboratorium</a>
-            </li>
         </ul>
     </div>
 </div> 
