@@ -18,7 +18,7 @@
                 <a href="#">Absensi Kehadiran</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'matkum') ? 'active' : '' ?>">
-                <a href="#">Mata Praktikum</a>
+                <a href="<?= base_url('index.php/MataPraktikum') ?>">Mata Praktikum</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'asisten') ? 'active' : '' ?>">
                 <a href="#">Asisten Praktikum</a>
