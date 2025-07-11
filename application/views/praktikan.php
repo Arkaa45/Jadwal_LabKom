@@ -40,9 +40,15 @@
         <div class="<?php echo $content_class; ?>">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3>Daftar Praktikan</h3>
-                <div>
+                <div class="d-flex flex-row gap-2">
                     <a href="<?php echo base_url('index.php/Praktikan/tambah'); ?>" class="btn btn-green"><i class="fa fa-plus"></i> Tambah Praktikan</a>
-                    <button class="btn btn-purple"><i class="fa fa-print"></i> Cetak</button>
+                    <button class="btn btn-purple" type="button"><i class="fa fa-print"></i> Cetak</button>
+                    <form method="post" action="<?php echo base_url('index.php/Praktikan/edit_multi'); ?>" id="form-edit-multi" style="display:inline-block; margin:0;">
+                        <button type="submit" class="btn btn-warning" id="btn-edit-multi"><i class="fa fa-edit"></i> Edit</button>
+                    </form>
+                    <form method="post" action="<?php echo base_url('index.php/Praktikan/hapus_multi'); ?>" id="form-delete-multi" style="display:inline-block; margin:0;">
+                        <button type="submit" class="btn btn-danger" id="btn-delete-multi" onclick="return confirm('Yakin ingin menghapus data yang dipilih?');"><i class="fa fa-trash"></i> Hapus</button>
+                    </form>
                 </div>
             </div>
             <div class="row mb-2">
@@ -74,7 +80,7 @@
                         <td><?= htmlspecialchars($row['alamat']); ?></td>
                         <td><?= htmlspecialchars(date('d-m-Y', strtotime($row['tgl_lahir']))); ?></td>
                         <td><?= htmlspecialchars($row['prodi']); ?></td>
-                        <td></td>
+                        <td><input type="checkbox" name="selected_nim[]" value="<?= htmlspecialchars($row['nim']); ?>" form="form-edit-multi" form="form-delete-multi"></td>
                     </tr>
                 <?php endforeach; else: ?>
                     <tr><td colspan="7" class="text-center">Data tidak ditemukan</td></tr>
