@@ -43,5 +43,19 @@ class JadwalPraktikum_model extends CI_Model {
         $this->db->join('kelas', 'jadwal_praktikum.kode_kelas = kelas.kode_kelas', 'left');
         return $this->db->get()->result_array();
     }
+    // Ambil data jadwal praktikum berdasarkan id
+    public function get_jadwal_by_id($id) {
+        return $this->db->get_where('jadwal_praktikum', ['id_jadwal_praktikum' => $id])->row_array();
+    }
+    // Update data jadwal praktikum
+    public function update_jadwal($id, $data) {
+        $this->db->where('id_jadwal_praktikum', $id);
+        return $this->db->update('jadwal_praktikum', $data);
+    }
+    // Hapus data jadwal praktikum
+    public function delete_jadwal($id) {
+        $this->db->where('id_jadwal_praktikum', $id);
+        return $this->db->delete('jadwal_praktikum');
+    }
     // Tambahan fungsi lain (insert, update, delete) bisa dibuat sesuai kebutuhan
 } 

@@ -9,6 +9,8 @@
     <style>
         .table th, .table td { vertical-align: middle; }
         .btn { margin-right: 4px; }
+        .btn-brown { background-color: #8B4513; color: #fff; }
+        .btn-brown:hover, .btn-brown:focus { background-color: #A0522D; color: #fff; }
     </style>
 </head>
 <body>
@@ -73,11 +75,12 @@
                         <td><?= htmlspecialchars($row['nama_dosen']); ?></td>
                         <td><?= htmlspecialchars($row['nama_ruang']); ?></td>
                         <td><?= htmlspecialchars($row['nama_kelas']); ?></td>
-                        <td><?= htmlspecialchars($row['hari']); ?></td>
-                        <td><?= htmlspecialchars(date('H:i', strtotime($row['waktu_mulai'])) . ' - ' . date('H:i', strtotime($row['waktu_selesai']))); ?></td>
+                        <td><?= htmlspecialchars(ucfirst($row['hari'])); ?></td>
+                        <td><?= htmlspecialchars($row['waktu_mulai']) . ' - ' . htmlspecialchars($row['waktu_selesai']); ?></td>
                         <td>
-                            <button class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
-                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            <a href="#" class="btn btn-brown btn-sm"><img src="<?php echo base_url('assets/img/verification.png'); ?>" alt="Verifikasi" style="width:16px;height:16px;"></a>
+                            <a href="<?php echo base_url('index.php/JadwalPraktikum/edit/' . $row['id_jadwal_praktikum']); ?>" class="btn btn-warning btn-sm"><img src="<?php echo base_url('assets/img/edit.png'); ?>" alt="Edit" style="width:16px;height:16px;"></a>
+                            <a href="<?php echo base_url('index.php/JadwalPraktikum/delete/' . $row['id_jadwal_praktikum']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus jadwal ini?');"><img src="<?php echo base_url('assets/img/trash.png'); ?>" alt="Hapus" style="width:16px;height:16px;"></a>
                         </td>
                     </tr>
                 <?php endforeach; else: ?>
