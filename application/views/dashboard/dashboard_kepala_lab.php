@@ -74,7 +74,7 @@
     var kelasLabels = <?= json_encode(array_column($kelas, 'semester')) ?>;
     var kelasData = <?= json_encode(array_column($kelas, 'total')) ?>;
     // Data Mata Praktikum
-    var matkumLabels = <?= json_encode(array_column($mata_praktikum, 'semester')) ?>;
+    var matkumLabels = <?= json_encode(array_map(function($s) { return 'Semester ' . $s; }, array_column($mata_praktikum, 'semester'))) ?>;
     var matkumData = <?= json_encode(array_column($mata_praktikum, 'total')) ?>;
     // Data Asisten Praktikum
     var asistenLabels = <?= json_encode(array_column($asisten, 'prodi')) ?>;
