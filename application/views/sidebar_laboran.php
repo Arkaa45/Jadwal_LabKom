@@ -12,7 +12,7 @@
                 <a href="<?= base_url('index.php/Kelas') ?>">Kelas Praktikum</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'praktikan') ? 'active' : '' ?>">
-                <a href="#">Praktikan</a>
+                <a href="<?= base_url('index.php/Praktikan') ?>">Praktikan</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'absensi') ? 'active' : '' ?>">
                 <a href="#">Absensi Kehadiran</a>
