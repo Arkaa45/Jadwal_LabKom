@@ -45,7 +45,7 @@
                     <input type="number" class="form-control" id="entries-count" placeholder="10" min="1" style="width:80px;">
                 </div>
                 <div class="col-md-4 offset-md-6">
-                    <input type="text" class="form-control" placeholder="Cari...">
+                    <input type="text" class="form-control" id="search-bar" placeholder="Cari...">
                 </div>
             </div>
             <table class="table table-bordered table-striped" id="kelas-table">
@@ -99,15 +99,19 @@
             }
             window.location.href = url;
         });
-
-        // Entries count filter
+        // Entries count + search filter
         function updateTableEntries() {
             var count = parseInt($('#entries-count').val()) || 10;
+            var search = $('#search-bar').val().toLowerCase();
             var rows = $('#kelas-table tbody tr');
             rows.hide();
-            rows.slice(0, count).show();
+            var filtered = rows.filter(function() {
+                return $(this).text().toLowerCase().indexOf(search) > -1;
+            });
+            filtered.slice(0, count).show();
         }
         $('#entries-count').on('input', updateTableEntries);
+        $('#search-bar').on('input', updateTableEntries);
         // Set default value and show initial rows
         $('#entries-count').val(10);
         updateTableEntries();
