@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+<?php $this->load->view('header'); ?>
 <?php $active_menu = 'matkum'; ?>
 <div class="container-fluid">
     <div class="row">
@@ -37,10 +38,8 @@
         }
         ?>
         <div class="<?php echo $content_class; ?>">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h3>Daftar Mata Praktikum</h3>
-                <a href="<?php echo base_url('index.php/MataPraktikum/tambah'); ?>" class="btn btn-green"><i class="fa fa-plus"></i> Tambah Mata Praktikum</a>
-            </div>
+            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;"><i class="fa fa-list"></i> Daftar Mata Praktikum</div>
+            <a href="<?php echo base_url('index.php/MataPraktikum/tambah'); ?>" class="btn btn-green mb-2"><i class="fa fa-plus"></i> Tambah Mata Praktikum</a>
             <div class="row mb-2">
                 <div class="col-md-2">
                     <input type="number" class="form-control" id="entries-count" placeholder="10" min="1" style="width:80px;">
@@ -78,7 +77,15 @@
                 <?php endif; ?>
                 </tbody>
             </table>
-            <button class="btn btn-secondary" id="btn-back">Back</button>
+            <div style="margin-top:10px;color:#555;font-size:14px;">
+                Menampilkan daftar Mata Praktikum, untuk mengedit dan menghapus data klik tombol pada kolom pilihan.
+            </div>
+            <a href="<?php
+                if ($role == 'admin') echo base_url('index.php/admin/dashboard');
+                elseif ($role == 'kepala_lab') echo base_url('index.php/kepala_lab/dashboard');
+                elseif ($role == 'laboran') echo base_url('index.php/laboran/dashboard');
+                else echo base_url();
+            ?>" class="btn btn-danger btn-sm mt-3"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </div>
@@ -123,4 +130,5 @@
     });
 </script>
 </body>
+</html> 
 </html> 

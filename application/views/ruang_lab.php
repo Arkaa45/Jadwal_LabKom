@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+<?php $this->load->view('header'); ?>
 <?php $active_menu = 'ruang'; ?>
 <div class="container-fluid">
     <div class="row">
@@ -37,9 +38,7 @@
         }
         ?>
         <div class="<?php echo $content_class; ?>">
-            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;">
-                <i class="fa fa-list"></i> Daftar Ruang Lab Praktikum
-            </div>
+            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;"><i class="fa fa-list"></i> Daftar Ruang Lab Praktikum</div>
             <a href="<?php echo base_url('index.php/RuangLab/tambah'); ?>" class="btn btn-green mb-2"><i class="fa fa-plus"></i> Tambah Ruang Laboratorium</a>
             <div class="row mb-2">
                 <div class="col-md-2">
@@ -77,6 +76,12 @@
             <div style="margin-top:10px;color:#555;font-size:14px;">
                 Menampilkan daftar Ruang Lab, untuk mengedit dan menghapus data klik tombol pada kolom pilihan.
             </div>
+            <a href="<?php
+                if ($role == 'admin') echo base_url('index.php/admin/dashboard');
+                elseif ($role == 'kepala_lab') echo base_url('index.php/kepala_lab/dashboard');
+                elseif ($role == 'laboran') echo base_url('index.php/laboran/dashboard');
+                else echo base_url();
+            ?>" class="btn btn-danger btn-sm mt-3"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </div>
@@ -86,32 +91,27 @@
 <script src="<?php echo base_url('assets/js/sidebar.js'); ?>"></script>
 <script>
     $(document).ready(function() {
-        // Entries count filter
+        var allRows = $('#ruang-table tbody tr');
+        var visibleRows = allRows;
+        
         function updateTableEntries() {
             var count = parseInt($('#entries-count').val()) || 10;
-            var rows = $('#ruang-table tbody tr');
-            rows.hide();
-            // Only show rows that match search
-            var visibleRows = rows.filter(':visible');
-            if ($('#search-bar').val()) {
-                visibleRows = rows.filter(':visible');
-            } else {
-                visibleRows = rows;
-            }
-            visibleRows.hide();
+            allRows.hide();
             visibleRows.slice(0, count).show();
         }
-        $('#entries-count').on('input', updateTableEntries);
-        // Set default value and show initial rows
+        
+        $('#entries-count').on('input', function() {
+            updateTableEntries();
+        });
+        
         $('#entries-count').val(10);
         updateTableEntries();
-
-        // Search bar filter
+        
         $('#search-bar').on('input', function() {
             var search = $(this).val().toLowerCase();
-            $('#ruang-table tbody tr').each(function() {
+            visibleRows = allRows.filter(function() {
                 var rowText = $(this).text().toLowerCase();
-                $(this).toggle(rowText.indexOf(search) > -1);
+                return rowText.indexOf(search) > -1;
             });
             updateTableEntries();
         });

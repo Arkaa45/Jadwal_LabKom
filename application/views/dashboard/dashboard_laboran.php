@@ -4,8 +4,33 @@
     <title>Dashboard Laboran</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/sidebar.css') ?>">
+    <style>
+        .well {
+            padding: 15px;
+            margin-bottom: 20px;
+            min-height: 250px;
+        }
+        .well h5 {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        canvas {
+            max-height: 180px !important;
+        }
+        .dashboard-header {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .dashboard-header h3 {
+            margin: 0;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
+<?php $this->load->view('header'); ?>
 <div class="container-fluid">
     <?php $active_menu = 'dashboard'; ?>
     <div class="row">
@@ -34,25 +59,25 @@
             </div>
             <h4>Home</h4>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="well">
                         <h5 class="text-center">Data Praktikan</h5>
                         <canvas id="praktikanChart"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="well">
                         <h5 class="text-center">Data Kelas</h5>
                         <canvas id="kelasChart"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="well">
                         <h5 class="text-center">Data Mata Praktikum</h5>
                         <canvas id="matkumChart"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="well">
                         <h5 class="text-center">Data Asisten Praktikum</h5>
                         <canvas id="asistenChart"></canvas>
@@ -92,8 +117,35 @@
                 backgroundColor: 'rgba(0,123,255,0.2)',
                 fill: true
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                }
+            }
         }
     });
+    
     // Chart Kelas
     new Chart(document.getElementById('kelasChart'), {
         type: 'bar',
@@ -104,8 +156,35 @@
                 data: kelasData,
                 backgroundColor: 'orange'
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                }
+            }
         }
     });
+    
     // Chart Mata Praktikum
     new Chart(document.getElementById('matkumChart'), {
         type: 'pie',
@@ -118,8 +197,18 @@
                     '#007bff', '#ffc107', '#dc3545', '#28a745', '#6610f2', '#fd7e14', '#6c757d', '#20c997'
                 ]
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
+    
     // Chart Asisten Praktikum
     new Chart(document.getElementById('asistenChart'), {
         type: 'doughnut',
@@ -132,6 +221,15 @@
                     '#dc3545', '#ffc107', '#007bff', '#28a745', '#6610f2', '#fd7e14', '#6c757d', '#20c997'
                 ]
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 </script>

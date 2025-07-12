@@ -75,10 +75,21 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .sidebar-container {
-        min-height: auto;
-        border-right: none;
-        border-bottom: 1px solid #dee2e6;
+    .container-fluid > .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .sidebar-container.col-md-2 {
+        min-width: 180px;
+        max-width: 220px;
+        flex: 0 0 40%;
+        border-right: 1px solid #dee2e6;
+        border-bottom: none;
+    }
+    .col-md-10 {
+        flex: 1 1 60%;
+        max-width: 100%;
     }
     
     .nav-stacked > li > a {
@@ -93,6 +104,17 @@
     }
 }
 
+/* Content area adjustments */
+.content-area {
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Ensure sidebar is always visible */
+.col-md-2 {
+    position: relative;
+    z-index: 1000;
+} 
 /* Content area adjustments */
 .content-area {
     padding: 20px;

@@ -12,8 +12,11 @@
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
-                <h1><i class="fas fa-laptop-code"></i> LabKom FTI</h1>
-                <p>Jadwal LabKom FTI UNIBBA</p>
+                <div style="text-align:center;margin-bottom:10px;">
+                    <img src="<?= base_url('assets/img/logoPT.png') ?>" alt="Logo" style="width:64px;height:64px;margin-bottom:10px;">
+                </div>
+                <h1 style="text-align:center;margin:0;">LabKom FTI</h1>
+                <p style="text-align:center;margin-top:5px;">Jadwal LabKom FTI UNIBBA</p>
             </div>
             
             <div class="auth-body">
@@ -36,12 +39,11 @@
                                value="<?php echo $identity['value']; ?>" 
                                placeholder="Masukkan email atau username"
                                required>
-                        <i class="fas fa-envelope input-icon"></i>
                     </div>
 
                     <div class="form-group">
                         <label for="password">
-                            <i class="fas fa-lock"></i> <?php echo lang('login_password_label'); ?>
+                            <?php echo lang('login_password_label'); ?>
                         </label>
                         <input type="password" 
                                name="password" 
@@ -49,12 +51,6 @@
                                class="form-control" 
                                placeholder="Masukkan password"
                                required>
-                        <i class="fas fa-key input-icon"></i>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="remember" id="remember" value="1">
-                        <label for="remember"><?php echo lang('login_remember_label'); ?></label>
                     </div>
 
                     <button type="submit" class="btn-auth">
@@ -62,12 +58,6 @@
                     </button>
 
                 <?php echo form_close(); ?>
-
-                <div class="auth-links">
-                    <a href="<?= base_url('auth/forgot_password') ?>">
-                        <i class="fas fa-question-circle"></i> <?php echo lang('login_forgot_password'); ?>
-                    </a>
-                </div>
             </div>
         </div>
     </div>

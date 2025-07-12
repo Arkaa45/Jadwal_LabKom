@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Asisten Praktikum</title>
+    <title>Daftar Laboran</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/fontawesome/all.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/sidebar.css'); ?>">
@@ -16,7 +16,7 @@
 </head>
 <body>
 <?php $this->load->view('header'); ?>
-<?php $active_menu = 'asisten'; ?>
+<?php $active_menu = 'laboran'; ?>
 <div class="container-fluid">
     <div class="row">
         <?php
@@ -38,49 +38,47 @@
         }
         ?>
         <div class="<?php echo $content_class; ?>">
-            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;"><i class="fa fa-list"></i> Daftar Asisten Praktikum</div>
-            <a href="<?php echo base_url('index.php/AsistenPraktikum/tambah'); ?>" class="btn btn-green mb-2"><i class="fa fa-plus"></i> Tambah Asisten Praktikum</a>
+            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;"><i class="fa fa-list"></i> Daftar Laboran</div>
+            <a href="<?php echo base_url('index.php/auth/create_user'); ?>" class="btn btn-green mb-2"><i class="fa fa-plus"></i> Tambah Laboran</a>
             <div class="row mb-2">
                 <div class="col-md-2">
                     <input type="number" class="form-control" id="entries-count" placeholder="10" min="1" style="width:80px;">
                 </div>
                 <div class="col-md-4 offset-md-6">
-                    <input type="text" class="form-control" id="search-bar" placeholder="Cari...">
+                    <input type="text" class="form-control" id="search-bar" placeholder="Search...">
                 </div>
             </div>
-            <table class="table table-bordered table-striped" id="asisten-table">
+            <table class="table table-bordered table-striped" id="users-table">
                 <thead class="thead-dark">
                     <tr>
-                        <th>No</th>
-                        <th>NIDN</th>
-                        <th>Nama Dosen</th>
+                        <th>ID Laboran</th>
+                        <th>Status</th>
+                        <th>Nama</th>
                         <th>Alamat</th>
-                        <th>Tgl Lahir</th>
-                        <th>Prodi</th>
+                        <th>Hp</th>
                         <th>Pilihan</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php if (!empty($asisten)): $no=1; foreach ($asisten as $row): ?>
+                <?php if (!empty($users)): foreach ($users as $user): ?>
                     <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= htmlspecialchars($row['nidn']); ?></td>
-                        <td><?= htmlspecialchars($row['nama_dosen']); ?></td>
-                        <td><?= htmlspecialchars($row['alamat']); ?></td>
-                        <td><?= htmlspecialchars($row['tgl_lahir']); ?></td>
-                        <td><?= htmlspecialchars($row['prodi']); ?></td>
+                        <td><?= htmlspecialchars($user['id']); ?></td>
+                        <td><?= htmlspecialchars($user['role']); ?></td>
+                        <td><?= htmlspecialchars($user['username']); ?></td>
+                        <td><?= htmlspecialchars($user['company'] ?? '-'); ?></td>
+                        <td><?= htmlspecialchars($user['phone'] ?? '-'); ?></td>
                         <td>
-                            <a href="<?php echo base_url('index.php/AsistenPraktikum/edit/' . $row['nidn']); ?>" class="btn btn-warning btn-sm"><img src="<?php echo base_url('assets/img/edit.png'); ?>" alt="Edit" style="width:16px;height:16px;"></a>
-                            <a href="<?php echo base_url('index.php/AsistenPraktikum/hapus/' . $row['nidn']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');"><img src="<?php echo base_url('assets/img/trash.png'); ?>" alt="Hapus" style="width:16px;height:16px;"></a>
+                            <a href="<?php echo base_url('index.php/auth/edit_user/' . $user['id']); ?>" class="btn btn-warning btn-sm"><img src="<?php echo base_url('assets/img/edit.png'); ?>" alt="Edit" style="width:16px;height:16px;"></a>
+                            <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');"><img src="<?php echo base_url('assets/img/trash.png'); ?>" alt="Hapus" style="width:16px;height:16px;"></a>
                         </td>
                     </tr>
                 <?php endforeach; else: ?>
-                    <tr><td colspan="7" class="text-center">Data tidak ditemukan</td></tr>
+                    <tr><td colspan="6" class="text-center">Data tidak ditemukan</td></tr>
                 <?php endif; ?>
                 </tbody>
             </table>
             <div style="margin-top:10px;color:#555;font-size:14px;">
-                Menampilkan daftar Asisten Praktikum, untuk mengedit dan menghapus data klik tombol pada kolom pilihan.
+                Menampilkan daftar Laboran, untuk mengedit dan menghapus data klik tombol pada kolom pilihan.
             </div>
             <a href="<?php
                 if ($role == 'admin') echo base_url('index.php/admin/dashboard');
@@ -97,39 +95,31 @@
 <script src="<?php echo base_url('assets/js/sidebar.js'); ?>"></script>
 <script>
     $(document).ready(function() {
-        // Entries count + search filter
+        var allRows = $('#users-table tbody tr');
+        var visibleRows = allRows;
+        
         function updateTableEntries() {
             var count = parseInt($('#entries-count').val()) || 10;
-            var search = $('#search-bar').val().toLowerCase();
-            var rows = $('#asisten-table tbody tr');
-            rows.hide();
-            var filtered = rows.filter(function() {
-                return $(this).text().toLowerCase().indexOf(search) > -1;
-            });
-            filtered.slice(0, count).show();
+            allRows.hide();
+            visibleRows.slice(0, count).show();
         }
-        $('#entries-count').on('input', updateTableEntries);
-        $('#search-bar').on('input', updateTableEntries);
-        // Set default value and show initial rows
+        
+        $('#entries-count').on('input', function() {
+            updateTableEntries();
+        });
+        
         $('#entries-count').val(10);
         updateTableEntries();
-        // Back button
-        $('#btn-back').on('click', function() {
-            var role = <?php echo json_encode(isset($role) ? $role : ''); ?>;
-            var url = '';
-            if (role === 'admin') {
-                url = '<?php echo base_url('admin'); ?>';
-            } else if (role === 'kepala_lab') {
-                url = '<?php echo base_url('kepalalab'); ?>';
-            } else if (role === 'laboran') {
-                url = '<?php echo base_url('laboran'); ?>';
-            } else {
-                url = '<?php echo base_url(); ?>';
-            }
-            window.location.href = url;
+        
+        $('#search-bar').on('input', function() {
+            var search = $(this).val().toLowerCase();
+            visibleRows = allRows.filter(function() {
+                var rowText = $(this).text().toLowerCase();
+                return rowText.indexOf(search) > -1;
+            });
+            updateTableEntries();
         });
     });
 </script>
 </body>
-</html> 
 </html> 

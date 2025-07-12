@@ -27,7 +27,7 @@
                 <a href="<?= base_url('index.php/RuangLab') ?>">Ruang Laboratorium</a>
             </li>
             <li class="<?= (isset($active_menu) && $active_menu == 'laboran') ? 'active' : '' ?>">
-                <a href="#">Laboran</a>
+                <a href="<?= base_url('index.php/Users') ?>">Laboran</a>
             </li>
         </ul>
     </div>

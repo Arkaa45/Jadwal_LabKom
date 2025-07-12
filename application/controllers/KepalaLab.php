@@ -21,6 +21,6 @@ class KepalaLab extends CI_Controller {
     }
 
     public function dashboard() {
-        redirect('kepalalab');
+        redirect('kepalalab/index');
     }
 }

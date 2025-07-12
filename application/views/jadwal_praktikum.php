@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+<?php $this->load->view('header'); ?>
 <?php $active_menu = 'jadwal'; ?>
 <div class="container-fluid">
     <div class="row">
@@ -36,7 +37,7 @@
         }
         ?>
         <div class="<?php echo $content_class; ?>">
-            <h3>Daftar jadwal praktikum</h3>
+            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;"><i class="fa fa-list"></i> Daftar Jadwal Praktikum</div>
             <div class="mb-3">
                 <a href="<?php echo base_url('index.php/JadwalPraktikum/tambah'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                 <button class="btn btn-secondary"><i class="fa fa-edit"></i> Data ubah jadwal</button>
@@ -86,7 +87,15 @@
                 <?php endif; ?>
                 </tbody>
             </table>
-            <button class="btn btn-secondary" id="btn-back">Back</button>
+            <div style="margin-top:10px;color:#555;font-size:14px;">
+                Menampilkan daftar Jadwal Praktikum, untuk mengedit dan menghapus data klik tombol pada kolom pilihan.
+            </div>
+            <a href="<?php
+                if ($role == 'admin') echo base_url('index.php/admin/dashboard');
+                elseif ($role == 'kepala_lab') echo base_url('index.php/kepala_lab/dashboard');
+                elseif ($role == 'laboran') echo base_url('index.php/laboran/dashboard');
+                else echo base_url();
+            ?>" class="btn btn-danger btn-sm mt-3"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </div>
@@ -130,4 +139,5 @@
     });
 </script>
 </body>
+</html> 
 </html> 

@@ -16,6 +16,7 @@
     </style>
 </head>
 <body>
+<?php $this->load->view('header'); ?>
 <?php $active_menu = 'praktikan'; ?>
 <div class="container-fluid">
     <div class="row">
@@ -38,6 +39,7 @@
         }
         ?>
         <div class="<?php echo $content_class; ?>">
+            <div style="background:#27ae60;color:#fff;padding:10px 20px;margin-bottom:20px;border-radius:4px;font-size:18px;font-weight:bold;"><i class="fa fa-list"></i> Daftar Praktikan</div>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3>Daftar Praktikan</h3>
                 <div class="d-flex flex-row gap-2">
@@ -87,7 +89,15 @@
                 <?php endif; ?>
                 </tbody>
             </table>
-            <button class="btn btn-secondary" id="btn-back">Back</button>
+            <div style="margin-top:10px;color:#555;font-size:14px;">
+                Menampilkan daftar Praktikan, untuk mengedit dan menghapus data klik tombol pada kolom pilihan.
+            </div>
+            <a href="<?php
+                if ($role == 'admin') echo base_url('index.php/admin/dashboard');
+                elseif ($role == 'kepala_lab') echo base_url('index.php/kepala_lab/dashboard');
+                elseif ($role == 'laboran') echo base_url('index.php/laboran/dashboard');
+                else echo base_url();
+            ?>" class="btn btn-danger btn-sm mt-3"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </div>
