@@ -23,6 +23,9 @@
             <li class="<?= (isset($active_menu) && $active_menu == 'asisten') ? 'active' : '' ?>">
                 <a href="<?= base_url('index.php/AsistenPraktikum') ?>">Asisten Praktikum</a>
             </li>
+            <li class="<?= (isset($active_menu) && $active_menu == 'ruang') ? 'active' : '' ?>">
+                <a href="<?= base_url('index.php/RuangLab') ?>">Ruang Laboratorium</a>
+            </li>
         </ul>
     </div>
 </div> 
