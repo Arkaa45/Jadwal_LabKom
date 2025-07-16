@@ -1,0 +1,32 @@
+Berikut adalah cara untuk menjalankan aplikasi di localhost localhost
+- nyalakan port apache dan MySQL di Xampp
+- clone link GitHub ke htdocs dalam folder xampp
+- buat database di php myadmin dengan nama jadwal_laboratorium
+- import database jadwal_laboratorium.sql dari folder Jadwal_LabKom/db ke database yg sudah dibuat pada Langkah sebelumnya di phpMyAdmin
+- akses aplikasi melalui dengan cara ketik di browser localhost/Jadwal_LabKom
+- login dengan akun yg sudah dibuat dengan memasukan email dan password (akun hanya bisa dibuat oleh users dengan role admin) 
+- ada 3 role yg tersedia yaitu admin, kepala lab, dan laboran.
+
+Adapun akun users yg sudah disiapkan sebelumnya sebagai berikut:
+
+1. Admin1
+email	: admin1@gmail.com
+password: password
+role	: admin
+
+2. KLab1
+email	: kepala1@example.com
+password: 12345678
+role	: kepala lab
+
+3. Laboran1
+email	: laboran1@example.com
+password: password
+role	: laboran
+
+4. Raka Atmaja
+email	: nyobaan@yahoo.co.id
+password: password
+role	: laboran
+
+
